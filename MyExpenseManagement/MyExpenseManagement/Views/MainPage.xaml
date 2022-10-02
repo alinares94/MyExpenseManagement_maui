@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<core:PageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:core="clr-namespace:MAUI.Core.Views;assembly=MAUI.Core"
+               x:Class="MyExpenseManagement.Views.MainPage"
+               xmlns:utils="clr-namespace:MyExpenseManagement.Utils"
+               xmlns:controls="clr-namespace:MyExpenseManagement.Views.Controls"
+               xmlns:vm="clr-namespace:MyExpenseManagement.ViewModels"
+               x:TypeArguments="vm:MainViewModel">
+    <core:PageBase.Resources>
+        <DataTemplate x:Key="expenseListTemplate">
+            <Label Text="{Binding Amount}"/>
+        </DataTemplate>
+    </core:PageBase.Resources>
+    <Grid RowDefinitions="Auto, *">
+        <controls:CategoriesControl x:Name="categories"/>
+        <Grid Grid.Row="1" BackgroundColor="{StaticResource Gray100}">
+            <VerticalStackLayout VerticalOptions="Start"
+                             x:Name="root">
+
+
+                <Label x:Name="lbTotal" FontAttributes="Bold" 
+                   TextColor="Red"
+                   FontSize="40" Margin="20,25"/>
+                <HorizontalStackLayout HeightRequest="15" Spacing="5"
+                                   WidthRequest="350" Margin="0,10,0,0">
+
+                    <BoxView x:Name="positive" HeightRequest="15"
+                         CornerRadius="5" Color="{StaticResource Primary}"/>
+                    <BoxView x:Name="negative" HeightRequest="15" 
+                         CornerRadius="5" Color="{StaticResource Secondary}"/>
+                </HorizontalStackLayout>
+                <FlexLayout Direction="Row" AlignItems="Center"
+                        HeightRequest="40" Margin="30,0"
+                        JustifyContent="SpaceBetween">
+
+                    <Label Text="+" FontSize="30" FontAttributes="Bold" TextColor="{StaticResource Primary}"/>
+                    <Label Text="-" FontSize="30" FontAttributes="Bold" TextColor="{StaticResource Secondary}"/>
+                </FlexLayout>
+            </VerticalStackLayout>
+            <ScrollView TranslationY="40">
+                <Frame VerticalOptions="Fill"  Margin="0,350,0,0"
+                       CornerRadius="30" Padding="30,30,30,60">
+                    <StackLayout x:Name="expenses"
+                                 BindableLayout.ItemsSource="{Binding Expenses}"
+                                 BindableLayout.ItemTemplate="{StaticResource expenseListTemplate}">
+                    </StackLayout>
+                </Frame>
+            </ScrollView>
+        </Grid>
+
+        <ImageButton Style="{StaticResource FAB}" x:Name="btnNewExpense"
+                     VerticalOptions="End" HorizontalOptions="End"
+                     Grid.Row="1"
+                     BackgroundColor="{StaticResource Primary}">
+            <ImageButton.Source>
+                <FontImageSource FontFamily="{x:Static utils:MaterialIcons.FontFamily}"
+                                 Glyph="{x:Static utils:MaterialIcons.Plus}" 
+                                 Color="{StaticResource White}" />
+            </ImageButton.Source>
+        </ImageButton>
+    </Grid>
+</core:PageBase>

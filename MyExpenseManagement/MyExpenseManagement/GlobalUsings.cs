@@ -1,0 +1,10 @@
+﻿global using MAUI.Core;
+global using MAUI.Core.Enums;
+global using MAUI.Core.ViewModels;
+global using MAUI.Core.Views;
+global using MAUI.Core.Services.Sqlite;
+global using MAUI.Core.Models;
+global using MyExpenseManagement.Utils;
+global using MyExpenseManagement.Views;
+global using MyExpenseManagement.Models;
+global using MyExpenseManagement.ViewModels;

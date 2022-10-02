@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<core:PageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:core="clr-namespace:MAUI.Core.Views;assembly=MAUI.Core"
+               x:Class="MyExpenseManagement.Views.ExpensePage"
+               xmlns:vm="clr-namespace:MyExpenseManagement.ViewModels"
+               x:TypeArguments="vm:ExpenseViewModel"
+               Title="Gasto / Ingreso">
+    <VerticalStackLayout>
+        <Label Text="Cantidad"/>
+        <Entry Keyboard="Numeric" x:Name="entryAmount"/>
+
+        <Label Text="Categoría"/>
+        <Picker x:Name="pickerCategory" ItemDisplayBinding="{Binding Description}"/>
+
+        <Label Text="Fecha"/>
+        <DatePicker x:Name="pickerDate"/>
+
+        <Label Text="Descripción"/>
+        <Entry x:Name="entryDescription"/>
+    </VerticalStackLayout>
+</core:PageBase>

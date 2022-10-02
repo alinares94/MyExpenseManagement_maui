@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<core:PageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:core="clr-namespace:MAUI.Core.Views;assembly=MAUI.Core"
+               xmlns:cp="https://trungnt2910.github.io/schemas/maui/2022/colorpicker"
+               x:Class="MyExpenseManagement.Views.SettingsPage"
+               xmlns:utils="clr-namespace:MyExpenseManagement.Utils"
+               xmlns:vm="clr-namespace:MyExpenseManagement.ViewModels"
+               x:TypeArguments="vm:SettingsViewModel"
+               Title="Opciones">
+    <Grid RowDefinitions="*">
+        <ImageButton Style="{StaticResource FAB}"
+                     VerticalOptions="End" HorizontalOptions="End"
+                     x:Name="btnNewCategory"
+                     BackgroundColor="{StaticResource Primary}">
+            <ImageButton.Source>
+                <FontImageSource FontFamily="{x:Static utils:MaterialIcons.FontFamily}"
+                                 Glyph="{x:Static utils:MaterialIcons.Plus}" 
+                                 Color="{StaticResource White}" />
+            </ImageButton.Source>
+        </ImageButton>
+    </Grid>
+</core:PageBase>
