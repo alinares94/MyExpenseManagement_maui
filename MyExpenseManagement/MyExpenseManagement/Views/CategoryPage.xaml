@@ -6,26 +6,49 @@
                xmlns:cp="https://trungnt2910.github.io/schemas/maui/2022/colorpicker"
                xmlns:vm="clr-namespace:MyExpenseManagement.ViewModels"
                x:TypeArguments="vm:CategoryViewModel"
+               xmlns:controls="clr-namespace:MyExpenseManagement.Views.Controls"
+               xmlns:utils="clr-namespace:MyExpenseManagement.Utils"
                Title="Categoría">
     <core:PageBase.Resources>
         <Style TargetType="Label">
             <Setter Property="Margin" Value="0,10,0,5"/>
         </Style>
     </core:PageBase.Resources>
-    <VerticalStackLayout Padding="20">
-        <Label Text="Icon"/>
-        <Entry/>
+    <Grid>
+        <VerticalStackLayout Padding="20">
+            <Label Text="Material Icon"/>
+            <Grid ColumnDefinitions="*,50">
+                <controls:BorderedControl>
+                    <Entry x:Name="entryIcon"/>
+                </controls:BorderedControl>
+                <Image x:Name="imageIcon" Grid.Column="1" WidthRequest="50" HeightRequest="50">
+                    <Image.Source>
+                        <FontImageSource x:Name="fontImageIcon"
+                                         Glyph="&#xf02df;"
+                                         FontFamily="{x:Static utils:MaterialIcons.FontFamily}"/>
+                    </Image.Source>
+                </Image>
+            </Grid>
 
-        <Label Text="Color"/>
-        <cp:ColorPicker HeightRequest="100"
-                            x:Name="ColorPicker"
-                            PickedColor="Red"/>
-        <Border HeightRequest="20" x:Name="selectedColor" 
-                    BackgroundColor="{Binding PickedColor, Source={x:Reference ColorPicker}}"
-                    Margin="0,5,0,0"/>
+            <Label Text="Color"/>
+            <cp:ColorPicker HeightRequest="100"
+                            x:Name="colorPicker"/>
 
-        <Label Text="Nombre"/>
-        <Entry/>
+            <Label Text="Descripción"/>
+            <controls:BorderedControl>
+                <Entry x:Name="entryDescription"/>
+            </controls:BorderedControl>
 
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+        <ImageButton Style="{StaticResource FAB}"
+                     VerticalOptions="End" HorizontalOptions="End"
+                     x:Name="btnAccept"
+                     BackgroundColor="{StaticResource Primary}">
+            <ImageButton.Source>
+                <FontImageSource FontFamily="{x:Static utils:MaterialIcons.FontFamily}"
+                                 Glyph="{x:Static utils:MaterialIcons.Check}" 
+                                 Color="{StaticResource White}" />
+            </ImageButton.Source>
+        </ImageButton>
+    </Grid>
 </core:PageBase>

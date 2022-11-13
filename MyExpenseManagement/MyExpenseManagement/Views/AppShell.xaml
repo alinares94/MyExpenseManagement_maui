@@ -4,23 +4,26 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MyExpenseManagement.Views"
-               xmlns:utils="clr-namespace:MyExpenseManagement.Utils"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:utils="clr-namespace:MyExpenseManagement.Utils"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarTitleColor="{StaticResource White}"
+    Shell.TabBarUnselectedColor="{StaticResource Gray200}"
+    Shell.TabBarBackgroundColor="{StaticResource Primary}">
 
 
 
     <TabBar>
-        <Tab>
+        <Tab Title="Home">
             <ShellContent Title="Home"
                           ContentTemplate="{DataTemplate local:MainPage}" 
                           Route="Home"/>
             <Tab.Icon>
                 <FontImageSource FontFamily="{x:Static utils:MaterialIcons.FontFamily}"
                                  Glyph="{x:Static utils:MaterialIcons.HomeOutline}" 
-                                 Color="{StaticResource Primary}" />
+                                 Color="{StaticResource White}" />
             </Tab.Icon>
         </Tab>
-        <Tab>
+        <Tab Title="Opciones">
             <ShellContent Title="Opciones"
                           ContentTemplate="{DataTemplate local:SettingsPage}" 
                           Route="Settings"/>
@@ -28,7 +31,7 @@
             <Tab.Icon>
                 <FontImageSource FontFamily="{x:Static utils:MaterialIcons.FontFamily}"
                                  Glyph="{x:Static utils:MaterialIcons.WrenchOutline}"
-                                 Color="{StaticResource Primary}" />
+                                 Color="{StaticResource White}" />
             </Tab.Icon>
         </Tab>
     </TabBar>

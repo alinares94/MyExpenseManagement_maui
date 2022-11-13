@@ -6,18 +6,19 @@
                x:Class="MyExpenseManagement.Views.SettingsPage"
                xmlns:utils="clr-namespace:MyExpenseManagement.Utils"
                xmlns:vm="clr-namespace:MyExpenseManagement.ViewModels"
+               xmlns:controls="clr-namespace:MyExpenseManagement.Views.Controls"
                x:TypeArguments="vm:SettingsViewModel"
                Title="Opciones">
-    <Grid RowDefinitions="*">
-        <ImageButton Style="{StaticResource FAB}"
-                     VerticalOptions="End" HorizontalOptions="End"
-                     x:Name="btnNewCategory"
-                     BackgroundColor="{StaticResource Primary}">
-            <ImageButton.Source>
-                <FontImageSource FontFamily="{x:Static utils:MaterialIcons.FontFamily}"
-                                 Glyph="{x:Static utils:MaterialIcons.Plus}" 
-                                 Color="{StaticResource White}" />
-            </ImageButton.Source>
-        </ImageButton>
-    </Grid>
+
+    <VerticalStackLayout Spacing="10" Padding="20">
+
+        <Label Text="Filtrar por"/>
+        <controls:BorderedControl>
+            <Picker x:Name="pickerDate"/>
+        </controls:BorderedControl>
+        
+        <Button Text="Añadir categoria" BackgroundColor="{x:StaticResource Primary}" TextColor="{x:StaticResource White}"
+                x:Name="btnAddCategory"
+                WidthRequest="200" Margin="0,10,0,0" HorizontalOptions="End"/>
+    </VerticalStackLayout>
 </core:PageBase>

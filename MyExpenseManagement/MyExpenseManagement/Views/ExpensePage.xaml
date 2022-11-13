@@ -5,18 +5,40 @@
                x:Class="MyExpenseManagement.Views.ExpensePage"
                xmlns:vm="clr-namespace:MyExpenseManagement.ViewModels"
                x:TypeArguments="vm:ExpenseViewModel"
+               xmlns:utils="clr-namespace:MyExpenseManagement.Utils"
+               xmlns:controls="clr-namespace:MyExpenseManagement.Views.Controls"
                Title="Gasto / Ingreso">
-    <VerticalStackLayout>
-        <Label Text="Cantidad"/>
-        <Entry Keyboard="Numeric" x:Name="entryAmount"/>
+    <Grid>
+        <VerticalStackLayout Padding="10">
+            <Label Text="Cantidad"/>
+            <controls:BorderedControl>
+                <Entry x:Name="entryAmount" Keyboard="Numeric"/>
+            </controls:BorderedControl>
 
-        <Label Text="Categoría"/>
-        <Picker x:Name="pickerCategory" ItemDisplayBinding="{Binding Description}"/>
+            <Label Text="Categoría"/>
+            <controls:BorderedControl>
+                <Picker x:Name="pickerCategory"/>
+            </controls:BorderedControl>
 
-        <Label Text="Fecha"/>
-        <DatePicker x:Name="pickerDate"/>
+            <Label Text="Fecha"/>
+            <controls:BorderedControl>
+                <DatePicker x:Name="pickerDate"/>
+            </controls:BorderedControl>
 
-        <Label Text="Descripción"/>
-        <Entry x:Name="entryDescription"/>
-    </VerticalStackLayout>
+            <Label Text="Descripción"/>
+            <controls:BorderedControl>
+                <Entry x:Name="entryDescription"/>
+            </controls:BorderedControl>
+        </VerticalStackLayout>
+        <ImageButton Style="{StaticResource FAB}"
+                     VerticalOptions="End" HorizontalOptions="End"
+                     x:Name="btnAccept"
+                     BackgroundColor="{StaticResource Primary}">
+            <ImageButton.Source>
+                <FontImageSource FontFamily="{x:Static utils:MaterialIcons.FontFamily}"
+                                 Glyph="{x:Static utils:MaterialIcons.Check}" 
+                                 Color="{StaticResource White}" />
+            </ImageButton.Source>
+        </ImageButton>
+    </Grid>
 </core:PageBase>

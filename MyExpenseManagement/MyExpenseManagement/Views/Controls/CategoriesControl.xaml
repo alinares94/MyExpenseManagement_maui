@@ -2,27 +2,33 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:utils="clr-namespace:MyExpenseManagement.Utils"
+             xmlns:models="clr-namespace:MyExpenseManagement.Models"
              x:Class="MyExpenseManagement.Views.Controls.CategoriesControl">
     <CollectionView x:Name="collection" ItemsLayout="HorizontalList">
         <CollectionView.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate x:DataType="models:Category">
                 <ContentView Padding="10">
                     <Border HeightRequest="60" WidthRequest="60"
-                                    BackgroundColor="{StaticResource White}">
+                            BackgroundColor="{StaticResource White}">
 
                         <Border.StrokeShape>
                             <EllipseGeometry Center="30,30" 
-                                                     RadiusX="30" 
-                                                     RadiusY="30"/>
+                                             RadiusX="30" 
+                                             RadiusY="30"/>
                         </Border.StrokeShape>
                         <Border.Shadow>
                             <Shadow Opacity="1" Radius="20" Brush="{StaticResource Gray300Brush}"/>
                         </Border.Shadow>
                         <Label FontFamily="{x:Static utils:MaterialIcons.FontFamily}"
-                                Text="{x:Static utils:MaterialIcons.Home}"
-                                FontSize="30" VerticalOptions="Center" 
-                                HorizontalOptions="Center"/>
+                               x:Name="icon"
+                               Text="{Binding Icon}"
+                               TextColor="{Binding ColorView}"
+                               FontSize="30" VerticalOptions="Center" 
+                               HorizontalOptions="Center"/>
                     </Border>
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </ContentView.GestureRecognizers>
                 </ContentView>
             </DataTemplate>
         </CollectionView.ItemTemplate>

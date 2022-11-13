@@ -14,6 +14,8 @@ public partial class SettingsPage : PageBase<SettingsViewModel>
 	{
 		base.OnActivated(disposables);
 
-        this.BindCommand(ViewModel, vm => vm.NewCategoryCommand, v => v.btnNewCategory).DisposeWith(disposables);
+        this.BindCommand(ViewModel, vm => vm.NewCategoryCommand, v => v.btnAddCategory).DisposeWith(disposables);
+        this.OneWayBind(ViewModel, vm => vm.FilterTypes, v => v.pickerDate.ItemsSource).DisposeWith(disposables);
+        this.Bind(ViewModel, vm => vm.SelectedFilter, v => v.pickerDate.SelectedItem).DisposeWith(disposables);
     }
 }
